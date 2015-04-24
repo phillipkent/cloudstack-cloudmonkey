@@ -253,7 +253,7 @@ class CloudMonkeyShell(cmd.Cmd, object):
             ##custom_root = "response"
             ##custom_root = "CloudStack-%s" % self.profile.replace(" ", "_")
             ##xml = dicttoxml(result, attr_type=False, custom_root=custom_root)
-            xml = "<?xml version=\"1.0\" ?><apiresponse><count>%s</count" % result['count']
+            xml = "<?xml version=\"1.0\" ?><apiresponse><count>%s</count>" % result['count']
             object = result.keys()[-1]
             object_tag = "<%s>" % object
             object_endtag = "</%s>" % object
