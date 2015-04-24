@@ -250,7 +250,8 @@ class CloudMonkeyShell(cmd.Cmd, object):
                                         separators=(',', ': ')))
 
         def print_result_xml(result):
-            custom_root = "CloudStack-%s" % self.profile.replace(" ", "_")
+            custom_root = "response"
+            ##custom_root = "CloudStack-%s" % self.profile.replace(" ", "_")
             xml = dicttoxml(result, attr_type=False, custom_root=custom_root)
             self.monkeyprint(parseString(xml).toprettyxml())
 
