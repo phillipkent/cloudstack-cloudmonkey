@@ -250,9 +250,16 @@ class CloudMonkeyShell(cmd.Cmd, object):
                                         separators=(',', ': ')))
 
         def print_result_xml(result):
-            custom_root = "response"
+            ##custom_root = "response"
             ##custom_root = "CloudStack-%s" % self.profile.replace(" ", "_")
-            xml = dicttoxml(result, attr_type=False, custom_root=custom_root)
+            ##xml = dicttoxml(result, attr_type=False, custom_root=custom_root)
+            xml = "<?xml version=\"1.0\" ?><apiresponse><count>%s</count" % result['count']
+            object = result.keys()[-1]
+            object_tag = "<%s>" % object
+            object_endtag = "</%s>" % object
+            for i in result[object]:
+                xml = xml + object_tag + dicttoxml(i,root=False,attr_type=False) + object_endtag
+            xml = xml + "</apiresponse>"
             self.monkeyprint(parseString(xml).toprettyxml())
 
         def print_result_tabular(result):
