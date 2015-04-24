@@ -255,10 +255,11 @@ class CloudMonkeyShell(cmd.Cmd, object):
             ##xml = dicttoxml(result, attr_type=False, custom_root=custom_root)
             xml = "<?xml version=\"1.0\" ?><apiresponse><count>%s</count>" % result['count']
             object = result.keys()[-1]
-            object_tag = "<%s>" % object
             object_endtag = "</%s>" % object
+            icount = 0
             for i in result[object]:
-                xml = xml + object_tag + dicttoxml(i,root=False,attr_type=False) + object_endtag
+                icount = icount + 1
+                xml = xml + ("<%s id=\"%s\">" % (object,icount)) + dicttoxml(i,root=False,attr_type=False) + object_endtag
             xml = xml + "</apiresponse>"
             self.monkeyprint(parseString(xml).toprettyxml())
 
