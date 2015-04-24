@@ -250,7 +250,6 @@ class CloudMonkeyShell(cmd.Cmd, object):
                                         separators=(',', ': ')))
 
         def print_result_xml(result):
-            ##custom_root = "response"
             ##custom_root = "CloudStack-%s" % self.profile.replace(" ", "_")
             ##xml = dicttoxml(result, attr_type=False, custom_root=custom_root)
             xml = "<?xml version=\"1.0\" ?><apiresponse><count>%s</count>" % result['count']
